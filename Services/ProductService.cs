@@ -34,8 +34,6 @@ namespace Challenge.Services
             return  productsToReturn.Select(p => _mapper.Map<GetProductDto>(p)).ToList();
         }
 
-
-
         public async Task<IEnumerable<GetProductDto>> GetProductByBrand(string brand)
         {
             var productsFromContext = await _context.Product.ToListAsync();
@@ -54,14 +52,16 @@ namespace Challenge.Services
         public async Task<GetProductDto> UpdateProduct(UpdateProductDto updatedProduct)
         {
             var productToUpdate = await _context.Product.FirstOrDefaultAsync(p => p.Id == updatedProduct.Id);
+            
+            if (productToUpdate == null)
+            {
+                return null;
+            }
 
             productToUpdate.Brand = updatedProduct.Brand;
             productToUpdate.Name = updatedProduct.Name;
             productToUpdate.Description = updatedProduct.Description;
             productToUpdate.Category = updatedProduct.Category;
-
-            if (productToUpdate == null) 
-                return null;
 
             await _context.SaveChangesAsync();
 
