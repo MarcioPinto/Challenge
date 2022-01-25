@@ -34,10 +34,14 @@ namespace Challenge.Services
             return  productsToReturn.Select(p => _mapper.Map<GetProductDto>(p)).ToList();
         }
 
+
+
         public async Task<IEnumerable<GetProductDto>> GetProductByBrand(string brand)
         {
             var productsFromContext = await _context.Product.ToListAsync();
-            var productsToReturn = productsFromContext.Where(p => p.Brand.Equals(brand, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            var productsToReturn = productsFromContext.Where(p => p.Brand.Equals(brand, StringComparison
+                                                      .InvariantCultureIgnoreCase))
+                                                      .ToList();
 
             if (!productsToReturn.Any())
             {
