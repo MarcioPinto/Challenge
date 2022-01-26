@@ -8,11 +8,11 @@ CRUD WebAPI with .NET 6, SQL Server && Entity Framework Core 6.
 - AutoMapper;
 
 //Endpoints
-[HttpPost]           -> Creates an item
+[HttpPost]-> Creates an item
 [HttpGet("{brand}")] -> Returns all the items of that brand
-[HttpGet("GetAll")]  -> Returns all the items
-[HttpPut]            -> Updates an item
-[HttpDelete("{id}")] -> Deletes the item with the specific id
+[HttpGet("GetAll")]-> Returns all the items
+[HttpPut]-> Updates an item
+[HttpDelete("{id}")]-> Deletes the item with the specific id
 
 //Entity Framework Core 6
 To add a Migration run the following command on .NET CLI:
